@@ -1,17 +1,19 @@
 def validate_data_dict(data_dict):
     if not data_dict:
         raise ValueError("data_dict is empty")
+    
     for something, otherthing in data_dict.items():
         if not otherthing:
             raise ValueError(f"The dict content under {something} is empty.")
+        
         if not isinstance(otherthing, dict):
             raise ValueError(
                 f"The content of {something} is not a dict but {type(otherthing)}."
             )
 
-        list = ["data", "file_type", "sofa", "paragraph"]
+        list_ = ["data", "file_type", "sofa", "paragraph"]
         missing_cats = []
-        for category in list:
+        for category in list_:
             if category not in list(otherthing.keys()):
                 missing_cats.append(category)
 
